@@ -1,15 +1,9 @@
 pipeline {
-    agent {
-        docker {
-            image 'python:3.9' // Utiliser une image Docker officielle de Python
-            args '-u root' // Exécuter en tant que root pour installer les dépendances
-        }
-    }
+    agent any
 
     stages {
         stage('Checkout') {
             steps {
-                // Vérifier le code source depuis le dépôt Git
                 checkout scm
             }
         }
@@ -61,14 +55,7 @@ pipeline {
 
     post {
         always {
-            // Actions à exécuter toujours, par exemple, nettoyer les fichiers temporaires
-            echo 'Pipeline terminé.'
-        }
-        success {
-            echo 'Pipeline réussi!'
-        }
-        failure {
-            echo 'Pipeline échoué.'
+            // Actions à exécuter toujours après les étapes
         }
     }
 }
