@@ -56,6 +56,15 @@ pipeline {
     post {
         always {
             // Actions à exécuter toujours après les étapes
+            echo 'Pipeline terminé.'
+        }
+        success {
+            // Actions à exécuter en cas de succès
+            echo 'Pipeline réussi!'
+        }
+        failure {
+            // Actions à exécuter en cas d'échec
+            echo 'Pipeline échoué.'
         }
     }
 }
